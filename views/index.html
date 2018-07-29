@@ -1,0 +1,78 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FCC Exercise Tracker</title>
+    <meta name="description" content="A backend project as part of the FCC curriculum">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        Exercise Tracker
+      </h1>
+    </header>
+
+    <main>
+      <section class="forms">
+        <form action="/api/exercise/new/user" method="post">
+          <h3>
+            Create a new user
+          </h3>
+          <code>POST /api/exercise/new/user</code>
+          <input name="username" type="text" maxlength="100" placeholder="username" required>
+          <button type="submit" id="submit-username">Submit</button>
+        </form>  
+      
+        <form action="/api/exercise/add" method="post">
+          <h3>
+            Add exercises
+          </h3>
+          <code>POST /api/exercise/add</code>
+          <input name="userId" type="text" maxlength="" placeholder="userId*" required>
+          <input name="description" type="text" maxlength="300" placeholder="description*" value="">
+          <input name="duration" type="number" maxlength="3" placeholder="duration* (mins)" required>
+          <input name="date" type="date" maxlength="" placeholder="date(yyyy-mm-dd)*" required>
+          <button type="submit" id="submit-exercise">Submit</button>
+        </form>
+      </section>
+      <section>
+      <p>
+      <strong>GET users's exercise log:</strong><code>GET /api/exercise/log?{userId}[&from][&to][&limit]</code>
+      <strong>{}</strong> = required, <strong>[]</strong> = optional
+      <strong>from, to</strong> = dates (yyyy-mm-dd); <strong>limit</strong>= number
+      </p>
+      </section>
+      <section class="exercises">
+        <ul id="exercises"></ul>
+      </section>
+    </main>
+
+    <footer>
+      Made with <a href="https://glitch.com">Glitch</a>!
+    </footer>
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+
+  </body>
+</html>
